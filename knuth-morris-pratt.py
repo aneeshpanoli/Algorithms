@@ -1,4 +1,11 @@
-
+# naive matching
+def pattern_matching(s, p):
+    seen = []
+    window_size = len(p)
+    for i in range(1+len(s) - window_size):
+        if p == s[i:i+window_size]:
+            seen.append(i)
+    return seen
 
 def kmp_table(p):
     '''
