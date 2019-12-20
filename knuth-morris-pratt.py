@@ -41,7 +41,7 @@ def kmp(s, p):
         pattern index - j
         if match is found:
           - if j is at the end of pattern
-          - append to the found index (i -j
+          - append to the found array : index (i -j) - you have found the pattern!!
           - set j's new value table[j]
        if no match:
           set j : table[j-1]
