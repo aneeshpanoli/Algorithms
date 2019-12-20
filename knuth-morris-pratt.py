@@ -17,7 +17,6 @@ def kmp_table(p):
             -repeat until a match is found or i is at 0
             if match is found before reaching 0, set tbale[j] as table[i]
             if i hits 0 before a match set table[j] as 0
-
     '''
     table = [0]*len(p)
     i = 0
@@ -65,11 +64,6 @@ def kmp(s, p):
             else:
                 j = 0
     return indices
-
-
-
-
-
 
 
 if __name__ == '__main__':
