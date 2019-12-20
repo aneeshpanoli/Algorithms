@@ -1,6 +1,8 @@
-def kmp(s, p):
+
+
+def kmp_table(p):
     '''
-    KMP algorithm for pattern matching
+        KMP algorithm for pattern matching
     1. Make look up table
       - compare each letters in the pattern 
       - create array of length len(p) fill with 0s
@@ -15,7 +17,23 @@ def kmp(s, p):
             -repeat until a match is found or i is at 0
             if match is found before reaching 0, set tbale[j] as table[i]
             if i hits 0 before a match set table[j] as 0
-            
+
+    '''
+    table = [0]*len(p)
+    i = 0
+    for j in range(1, len(p)):
+        if p[i] == p[j]:
+            table[j] = table[i]+1
+            i += 1
+        else:
+            while p[i] != p[j] and i != 0:
+                i = table[i-1]
+            table[j] = table[i]
+    return table
+
+
+def kmp(s, p):
+    '''
      2. Perform matching
       - loop through the s as j
       - inititate i as 0 -- this is pattern index
@@ -50,22 +68,7 @@ def kmp(s, p):
 
 
 
-def kmp_table(p):
-    '''preprocess pattern
-        initialize and array of len p
 
-    '''
-    table = [0]*len(p)
-    i = 0
-    for j in range(1, len(p)):
-        if p[i] == p[j]:
-            table[j] = table[i]+1
-            i += 1
-        else:
-            while p[i] != p[j] and i != 0:
-                i = table[i-1]
-            table[j] = table[i]
-    return table
 
 
 
