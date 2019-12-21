@@ -53,9 +53,28 @@ def make_tree(arr):
             queue.append(child)
     return root
 
+def make_bst(arr):
+    node = root = Node(arr.pop(len(arr)//2))
+    while arr:
+        child = Node(arr.pop(0))
+        if child.value > node.value:
+            while node.right:
+                node = node.right
+            node.right = child
+            node = root
+        else:
+            while node.left:
+                node = node.left
+            node.left = child
+            node = root
+    return root
 
 
-
+def height(root):
+    if not root:
+        return -1
+    else:
+        return 1 + max(height(root.left), height(root.right))
 
 
 if __name__ == '__main__':
@@ -66,9 +85,11 @@ if __name__ == '__main__':
     bt1.left.left = Node(4)
     bt1.left.right = Node(5)
 
-    bt2 = make_tree([1, 2, 3, 4, 5])
+    bt2 = make_bst(sorted([5, 1, 2, 3, 4, 6, 7]))
 
-    level_order(bt2)
+    # print(bt2.value)
+    # in_order(bt2)
+    print(height(bt2))
 
 
 
