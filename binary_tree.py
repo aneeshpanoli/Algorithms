@@ -30,7 +30,6 @@ def post_order(root):
 def level_order(root):
     queue = []
     queue.append(root)
-    node = root
     while queue:
         node = queue.pop(0)
         if node:
