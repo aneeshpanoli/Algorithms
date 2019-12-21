@@ -38,6 +38,25 @@ def level_order(root):
             print(node.value)
 
 
+def make_tree(arr):
+    queue = []
+    node = root = Node(arr.pop(0))
+    queue.append(node)
+    while arr:
+        node = queue.pop(0)
+        child = Node(arr.pop(0))
+        node.left = child
+        queue.append(child)
+        if arr:
+            child = Node(arr.pop(0))
+            node.right = child
+            queue.append(child)
+    return root
+
+
+
+
+
 
 if __name__ == '__main__':
 
@@ -47,7 +66,9 @@ if __name__ == '__main__':
     bt1.left.left = Node(4)
     bt1.left.right = Node(5)
 
-    level_order(bt1)
+    bt2 = make_tree([1, 2, 3, 4, 5])
+
+    level_order(bt2)
 
 
 
