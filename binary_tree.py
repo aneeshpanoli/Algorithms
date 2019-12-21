@@ -70,6 +70,22 @@ def make_bst(arr):
     return root
 
 
+def iter_in_order(root):
+    current = root
+    stack = []
+    vals = []
+    while True:
+        if current:
+            stack.append(current)
+            current = current.left
+        elif stack:
+            current = stack.pop()
+            vals.append(current.val)
+            current = current.right
+        else:
+            return vals
+
+
 def height(root):
     if not root:
         return -1
@@ -88,8 +104,8 @@ if __name__ == '__main__':
     bt2 = make_bst(sorted([5, 1, 2, 3, 4, 6, 7]))
 
     # print(bt2.value)
-    # in_order(bt2)
-    print(height(bt2))
+    pre_order(bt2)
+    # print(height(bt2))
 
 
 
