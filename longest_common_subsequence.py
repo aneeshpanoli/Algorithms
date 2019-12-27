@@ -19,8 +19,8 @@ print(find_common_subsequence('aa', 'aa')) # aa
 print(find_common_subsequence('axxxa', 'aa')) # aa
 print(find_common_subsequence('xxxaxxxa', 'aa')) # aa
 print(find_common_subsequence('aa', 'axxxaa')) # aa
-print(find_common_subsequence('', 'aa')) # aa
-print(find_common_subsequence('a', '')) # aa
+print(find_common_subsequence('', 'aa')) # ""
+print(find_common_subsequence('a', '')) # ""
 
 
 #brute force # 2
