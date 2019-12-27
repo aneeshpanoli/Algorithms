@@ -1,4 +1,29 @@
-#brute force
+__author__ = Aneesh Panoli
+
+def find_common_subsequence(s: str, ss: str) -> str:
+    if not s or not ss:
+        return ""
+    lcss = ""
+    s_range_limit = 0
+    for i in range(len(ss)): 
+        for j in range(s_range_limit, len(s)): # o(n*m)
+            if ss[i] == s[j]:
+                lcss += ss[i]
+                s_range_limit = i + 1
+                break
+    return lcss
+
+
+
+print(find_common_subsequence('aa', 'aa')) # aa
+print(find_common_subsequence('axxxa', 'aa')) # aa
+print(find_common_subsequence('xxxaxxxa', 'aa')) # aa
+print(find_common_subsequence('aa', 'axxxaa')) # aa
+print(find_common_subsequence('', 'aa')) # aa
+print(find_common_subsequence('a', '')) # aa
+
+
+#brute force # 2
 def find_the_lowest_common_sub_sequence(s: str, p: str) -> str:
     if not p or not s:
         return ""
