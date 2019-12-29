@@ -1,0 +1,17 @@
+'''
+make permuataions
+'''
+from typing import List
+
+def make_parenthesis(a: List[Any]) -> List[str]:
+    
+    if not a:
+        return [[]]
+    perms = make_parenthesis(a[1:])
+    char = a[:1]
+    results = []
+    for partial in perms:
+        for i in range(len(partial) + 1):
+            results.append(partial[:i] + char + partial[i:])
+    return results        
+print(make_parenthesis())
