@@ -1,6 +1,6 @@
 #author Aneesh Panoli
 '''
-while not root.next, root.next newnode9value
+http://cslibrary.stanford.edu/109/TreeListRecursion.html
 '''
 
 
