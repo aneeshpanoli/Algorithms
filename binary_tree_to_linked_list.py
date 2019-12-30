@@ -62,6 +62,21 @@ class BinaryTreeNode:
             curr.next = ListNode(val=i)
             curr = curr.next
         return head.next
+    
+    def find_height(self, root):
+        if not root:
+            return -1
+        return 1 + max(self.find_height(root.left), self.find_height(root.right))
+    
+    def find_common_ancestor(self, root, val1, val2):
+        while root:
+            if val1 > root.val and val2 > root.val:
+                root = root.right
+            elif val1 < root.val and val2 < root.val:
+                root. root.left
+            else:
+                return root.val
+       raise ValueError("Common ancestor not found!)
         
     
     
