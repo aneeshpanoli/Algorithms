@@ -34,19 +34,28 @@ def find_depth_any(s):
     stack = []
     max_depth = 0
     brackets = {'(':')', '{':'}', '[':']'}
+    pipe_counter = 0
     for b in s:
         if b in brackets:
             stack.append(b)
             max_depth = max(max_depth, len(stack))
-        elif b in set([')', '}', '[']):
-            if not stack:
+        elif b in set(brackets.values()):
+            if not stack or b != brackets[stack[-1]]:
                 return -1
-            if  b == brackets[stack[-1]]:
+            stack.pop()
+        elif b == '|':
+            if pipe_counter > 0 and stack[-1] == b:
+                pipe_counter -= 1
                 stack.pop()
             else:
-                return -1
+                pipe_counter += 1
+                stack.append(b)
+                max_depth = max(max_depth, len(stack))
+    if pipe_counter != 0:
+        return -1
+
     return max_depth
             
     
     
-print(find_depth_any('(())(){{{}}}'))
+print(find_depth_any('(())(){{{||}}}||'))
