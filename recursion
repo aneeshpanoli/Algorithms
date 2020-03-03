@@ -1,17 +1,30 @@
-'''
-make permuataions
-'''
-from typing import List
-
-def make_parenthesis(a: List[Any]) -> List[str]:
+def string_comb(string, combination, n):
+    if not n:
+        print(combination)
+        return
+    if not string:
+        return
     
-    if not a:
-        return [[]]
-    perms = make_parenthesis(a[1:])
-    char = a[:1]
-    results = []
-    for partial in perms:
-        for i in range(len(partial) + 1):
-            results.append(partial[:i] + char + partial[i:])
-    return results        
-print(make_parenthesis())
+    for i in range(len(string)):
+        combination += string[i]
+        string_comb(string[i+1:], combination, n-1)
+        combination.pop()
+
+# string_comb('abc', "", 2)   
+
+# combination sum
+def find_set(num_set, nums, target):
+    if target == 0:
+        print(nums)
+        return
+    
+    for i in range(len(num_set)):
+        # print(target)
+        new_target = target - num_set[i]
+        if new_target < 0:
+            continue
+        nums.append(num_set[i])
+        find_set(num_set, nums, new_target)
+        nums.pop()
+        
+find_set([2, 3, 4, 5, 6], [], 6) 
